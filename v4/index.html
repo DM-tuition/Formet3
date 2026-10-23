@@ -1002,6 +1002,50 @@ html.is-ready:not(.rm) .hero3__foot>*{animation-delay:2.05s}
 .foot__tag{display:block;width:120px;height:auto;aspect-ratio:674/259}
 @media (min-width:992px){.foot__orn{width:52px;position:static}.foot__tag{width:150px}}
 
+
+/* ============================================================
+   formet 4 — the owner's palette (23 Oct): burgundy on white and a very light cream
+   ============================================================ */
+:root{
+  --bg:#FBF8F2;--surface:#FFFFFF;--footer-bg:#F5EEE3;--card-bg:#FFFFFF;
+  --fg:#2B0B12;--fg-2:rgba(43,11,18,.70);--fg-3:rgba(43,11,18,.50);--fg-tint:rgba(107,1,19,.06);
+  --line:rgba(43,11,18,.12);--line-strong:rgba(43,11,18,.28);
+  --brand:#6B0113;--on-brand:#FFFFFF;--accent:#6B0113;--on-accent:#FFFFFF;
+  --btn-bg:#6B0113;--btn-fg:#FBF8F2;--btn-icon:#FBF8F2;--btn-hover-bg:#560000;--btn-hover-fg:#FBF8F2;
+  --pill-on-bg:#6B0113;--pill-on-fg:#FFFFFF;--nav-bg:rgba(251,248,242,.88);--lb-bg:rgba(251,248,242,.98);
+  --tbar-bg:#560000;--tbar-fg:#F4EFE6;--ok:#6B0113;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#16050A;--surface:#220A10;--footer-bg:#100307;--card-bg:#F6F0E6;
+  --fg:#F4EFE6;--fg-2:rgba(244,239,230,.72);--fg-3:rgba(244,239,230,.5);--fg-tint:rgba(244,239,230,.08);
+  --line:rgba(244,239,230,.14);--line-strong:rgba(244,239,230,.3);
+  --brand:#F4EFE6;--on-brand:#560000;--accent:#F4EFE6;--on-accent:#560000;
+  --btn-bg:#F4EFE6;--btn-fg:#560000;--btn-icon:#560000;--btn-hover-bg:#E8DCCB;--btn-hover-fg:#560000;
+  --pill-on-bg:#F4EFE6;--pill-on-fg:#560000;--nav-bg:rgba(22,5,10,.78);--lb-bg:rgba(22,5,10,.97);
+  --tbar-bg:#F4EFE6;--tbar-fg:#560000;--ok:#F4EFE6;--no1-line:rgba(244,239,230,.55);
+}}
+:root[data-theme="dark"]{
+  --bg:#16050A;--surface:#220A10;--footer-bg:#100307;--card-bg:#F6F0E6;
+  --fg:#F4EFE6;--fg-2:rgba(244,239,230,.72);--fg-3:rgba(244,239,230,.5);--fg-tint:rgba(244,239,230,.08);
+  --line:rgba(244,239,230,.14);--line-strong:rgba(244,239,230,.3);
+  --brand:#F4EFE6;--on-brand:#560000;--accent:#F4EFE6;--on-accent:#560000;
+  --btn-bg:#F4EFE6;--btn-fg:#560000;--btn-icon:#560000;--btn-hover-bg:#E8DCCB;--btn-hover-fg:#560000;
+  --pill-on-bg:#F4EFE6;--pill-on-fg:#560000;--nav-bg:rgba(22,5,10,.78);--lb-bg:rgba(22,5,10,.97);
+  --tbar-bg:#F4EFE6;--tbar-fg:#560000;--ok:#F4EFE6;--no1-line:rgba(244,239,230,.55);
+}
+.tbar{background:var(--tbar-bg);color:var(--tbar-fg)}
+.logo,.mega,.intro__word,.foot__word{color:var(--brand);fill:var(--brand)}
+.intro__orn,.foot__orn,.toggle svg{fill:var(--brand)}
+.pill{background:var(--brand);color:var(--on-brand)}
+.pill--light{background:var(--surface);color:var(--brand)}
+.site-header .badge,.site-header:not(.is-solid) .hd-bag .badge{background:var(--brand);color:var(--on-brand)}
+.drop__t,.lk__t,.pdp3__name,.foot__h,.menu__list a,.menu__list button{color:var(--brand)}
+.banner__line--back{color:var(--brand)}
+.banner__line--front{-webkit-text-stroke-color:var(--brand)}
+.card__dots i{background:var(--brand)}
+.chip[aria-checked="true"]{background:var(--brand);color:var(--on-brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.drop{box-shadow:0 -1px 0 var(--line),0 -30px 60px -30px rgba(43,11,18,.12)}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
