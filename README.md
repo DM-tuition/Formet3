@@ -19,3 +19,13 @@ product grid. Versions 1 and 2: [Formet-](https://github.com/DM-tuition/Formet-)
 
 This is not the official store. The bag and checkout are a demo: nothing is sold and no card
 details are asked for. Photos are the brand's own.
+
+## Version 4 (in `v4/`)
+
+**Live:** https://dm-tuition.github.io/Formet3/v4/
+
+A white site built on the owner's own marks: his wordmark, damask and woven tag (traced from his
+files), and every product shot cut out and set on white. A short intro (the damask, then the
+wordmark), the three pieces standing in front of a giant wordmark that docks into the header, the
+ticker in the woven tag's colours, and smoother scroll animations on the No. 1 dive and the
+Manchester banner.
