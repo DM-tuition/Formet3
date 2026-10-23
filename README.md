@@ -5,7 +5,7 @@ Mertra at the owner's request: a white page with black type, a campaign hero and
 product grid. Versions 1 and 2: [Formet-](https://github.com/DM-tuition/Formet-) ·
 [Formet2](https://github.com/DM-tuition/Formet2).
 
-**Live:** https://dm-tuition.github.io/Formet3/ (once GitHub Pages is switched on)
+**Live:** https://dm-tuition.github.io/Formet3/
 
 - **Campaign (Zara):** three photos side by side (one at a time on a phone), the wordmark across
   them. As you scroll it shrinks into the header while the white shop rises over the photos.

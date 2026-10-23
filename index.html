@@ -695,7 +695,7 @@ html.m-on .site-header:not(.is-docked) .logo{opacity:0}
 /* ---------- The wordmark across the campaign; motion.js docks it into the header ---------- */
 .mega{position:absolute;z-index:99;left:0;right:0;top:calc(var(--tbar) + 50vh);margin-inline:auto;width:min(86vw,1080px);translate:0 -50%;color:#fff;pointer-events:none;filter:drop-shadow(0 6px 30px rgba(0,0,0,.18))}
 .mega svg{width:100%;height:auto;aspect-ratio:1414/669;fill:currentColor}
-html.m-on .mega{position:fixed;top:0;left:0;right:auto;margin:0;translate:none;transform-origin:0 0;will-change:transform}
+html.m-on .mega{position:fixed;top:calc(var(--tbar) + 50vh);left:50%;right:auto;margin:0;translate:none;transform-origin:50% 50%;will-change:transform}
 
 /* ---------- Menu (Zara's left panel) ---------- */
 .menu{position:fixed;z-index:195;inset:0 auto 0 0;width:min(440px,100vw);display:flex;flex-direction:column;padding:calc(var(--tbar) + 14px) 28px calc(28px + env(safe-area-inset-bottom,0px));background:var(--bg);color:var(--fg);transform:translateX(-100%);transition:transform .6s cubic-bezier(.76,0,.24,1);overflow-y:auto}
@@ -3149,15 +3149,18 @@ function build(c, ctx) {
   /* the wordmark sits across the three photos, then shrinks into the header as the shop rises over them */
   const mega = $('.mega'), header = $('#site-header'), hlogo = $('.logo', header);
   if (mega && hlogo) {
-    const W = () => Math.min(innerWidth * 0.86, 1080);
-    const rest = () => ({ x: (innerWidth - W()) / 2, y: 28 + innerHeight * 0.5 - W() * 669 / 1414 / 2 });
-    const dock = () => { const r = $('svg', hlogo).getBoundingClientRect(); return { x: r.left, y: r.top, s: r.width / W() }; };
-    gsap.set(mega, { width: () => W(), transformOrigin: '0 0' });
+    /* the resting place is pure CSS (centred on the campaign), so a resize can never strand it; only the
+       move to the header is measured: centre to centre, then the width ratio */
+    const dock = () => {
+      const r = $('svg', hlogo).getBoundingClientRect();
+      return { x: r.left + r.width / 2 - mega.offsetLeft, y: r.top + r.height / 2 - mega.offsetTop, s: r.width / mega.offsetWidth };
+    };
     const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.stack', start: 'top top', end: () => '+=' + innerHeight * 0.72, scrub: 0.5, invalidateOnRefresh: true,
       onRefresh: s => header.classList.toggle('is-docked', s.progress > 0.97) } });
     /* the timeline's own update: with a smoothed scrub it keeps moving after the scroll stops */
     tl.eventCallback('onUpdate', () => header.classList.toggle('is-docked', tl.progress() > 0.97));
-    tl.fromTo(mega, { x: () => rest().x, y: () => rest().y, scale: 1 }, { x: () => dock().x, y: () => dock().y, scale: () => dock().s, ease: 'power2.inOut', duration: 1 }, 0)
+    gsap.set(mega, { xPercent: -50, yPercent: -50 });
+    tl.fromTo(mega, { x: 0, y: 0, scale: 1 }, { x: () => dock().x, y: () => dock().y, scale: () => dock().s, ease: 'power2.inOut', duration: 1 }, 0)
       .fromTo(mega, { opacity: 1 }, { opacity: 0, duration: 0.06 }, 0.94);
     cleanup.push(() => { gsap.set(mega, { clearProps: 'all' }); header.classList.remove('is-docked'); });
   }
